@@ -34,6 +34,11 @@
   cursor: pointer;
   border-radius: 5px;
 }
+.navigation button:disabled {
+  background-color: #cccccc; /* Light grey background */
+  color: #666666; /* Darker grey text */
+  cursor: not-allowed; /* Changes cursor to indicate disabled */
+}
 
 .popup {
   position: fixed;

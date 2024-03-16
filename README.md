@@ -11,7 +11,7 @@ Codepath Project Unit 3 General knowledge Triva flash cards Part Two.
 - [x] A back button displayed on the card can be used to return to the previous card in a set sequence
 - [x] Clicking on the card shows the corresponding component of the information pair
 - [x] A next button displayed on the card can be used to navigate to the next card in a set sequence
-
+- [x] There is a visual indication that the card displayed is the first or last card such as back button is grayed out.
 ## Installation
 
 To run this project locally, follow these steps:

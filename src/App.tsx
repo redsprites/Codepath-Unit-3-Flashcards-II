@@ -74,8 +74,8 @@ const App: React.FC = () => {
         </div>
       )}
       <div className='navigation' >
-        <button onClick={() => showPrevious(currentCardIndex)}> Previous </button>
-        <button onClick={()=>showNext(currentCardIndex)}> Next </button>
+        <button disabled= {currentCardIndex=== 0} onClick={() => showPrevious(currentCardIndex)}> Previous </button>
+        <button disabled= {currentCardIndex=== cards.length-1} onClick={()=>showNext(currentCardIndex)}> Next </button>
       </div> 
         <form onSubmit={checkAnswer}>
         <input 
