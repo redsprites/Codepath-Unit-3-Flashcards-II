@@ -26,4 +26,4 @@ To run this project locally, follow these steps:
 
 Here's a walkthrough of implemented user stories:
 
-![Walkthrough GIF](https://imgur.com/mUOq9nf.gif)
+![Walkthrough GIF](https://imgur.com/9znstZW.gif)
