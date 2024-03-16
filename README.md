@@ -3,22 +3,22 @@
 ## React + TypeScript + Vite
 
 ## Overview
-Codepath Project Unit 2 General knowledge Triva flash cards.
+Codepath Project Unit 3 General knowledge Triva flash cards Part Two.
 
 ## Required Features Completed
-- [x] The title of the card set and some information about it, such as a short description and the total number of cards are displayed
-- [x] A single card at a time is displayed, only showing one of the components of the information pair
-- [x] Create a list of card pairs 
+- [x] The user can enter their guess in a box before seeing the flipside of the card
+- [x] Clicking on a submit button shows visual feedback about whether the answer was correct or incorrect
+- [x] A back button displayed on the card can be used to return to the previous card in a set sequence
 - [x] Clicking on the card shows the corresponding component of the information pair
-- [x] Clicking the next button displays a random new card
+- [x] A next button displayed on the card can be used to navigate to the next card in a set sequence
 
 ## Installation
 
 To run this project locally, follow these steps:
 
    ```bash
-   git clone https://github.com/redsprites/Codepath-Flashcards.git
-   cd  Codepath-Flashcards
+   git clone https://github.com/redsprites/Codepath-Unit-3-Flashcards-II.git
+   cd  Codepath-Unit-3-Flashcards-II
    npm install
    npm run dev
    ```
@@ -26,4 +26,4 @@ To run this project locally, follow these steps:
 
 Here's a walkthrough of implemented user stories:
 
-![Walkthrough GIF](https://imgur.com/vBKX8bZ.gif)
+![Walkthrough GIF](https://imgur.com/mUOq9nf.gif)

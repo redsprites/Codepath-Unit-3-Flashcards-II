@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FormEventHandler, useState } from 'react';
 import Flashcard from './components/FlashCard';
 import './App.css';
 import { Card , FlashcardProps } from './models/Card';
@@ -30,27 +30,63 @@ const App: React.FC = () => {
   const [cards] = useState<Card[]>(initialCards);
   const [currentCardIndex, setCurrentCardIndex] = useState<number>(0);
   const [reset, setReset] = useState<boolean>(false);
+  const [inputValue, setInputValue] = useState<string>(""); 
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupMessage, setPopupMessage] = useState("");
 
-  const showRandomCard = () => {
+  const showPrevious = (currentCardIndex: number) => {
     setReset(!reset);
-    setTimeout(() => {
-      let randomIndex = Math.floor(Math.random() * cards.length);
-    while (randomIndex === currentCardIndex) {
-      randomIndex = Math.floor(Math.random() * cards.length);
-    }
-    setCurrentCardIndex(randomIndex);
+    setTimeout(() => {setCurrentCardIndex(currentCardIndex === 0 ? cards.length - 1 : currentCardIndex - 1);
     }, 270);
-    
-   
   };
-
+  const showNext = (currentCardIndex: number) => {
+    setReset(!reset);
+    setTimeout(() => {setCurrentCardIndex((currentCardIndex + 1) % cards.length);
+    }, 270); 
+  };
+  const checkAnswer = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+    let message = "";
+    if (inputValue.toLowerCase() === cards[currentCardIndex].answer.toLowerCase()) {
+      message = "Correct!";
+    } else {
+      message = `Incorrect. The correct answer is: ${cards[currentCardIndex].answer}`;
+    }
+    setPopupMessage(message);
+    setShowPopup(true);
+    setInputValue("");
+  };
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
   return (
     <div className="app">
       <h1>General Knowledge Flashcards</h1>
       <p>A collection of general knowledge questions to test your trivia skills.</p>
       <p>Total Cards: {cards.length}</p>
       <Flashcard card={cards[currentCardIndex]} reset={reset} />
-      <button onClick={showRandomCard}>Choose Random Card</button>
+            {showPopup && (
+        <div className="overlay" onClick={() => setShowPopup(false)}>
+          <div className="popup">
+            <p>{popupMessage}</p>
+            <button onClick={() => setShowPopup(false)}>Close</button>
+          </div>
+        </div>
+      )}
+      <div className='navigation' >
+        <button onClick={() => showPrevious(currentCardIndex)}> Previous </button>
+        <button onClick={()=>showNext(currentCardIndex)}> Next </button>
+      </div> 
+        <form onSubmit={checkAnswer}>
+        <input 
+          type="text" 
+          className='input-field'
+          placeholder="Enter your answer" 
+          value={inputValue} 
+          onChange={handleInputChange}  />
+        <input className="submit-button"type="submit"/>
+        </form>
+     
     </div>
   );
 }
